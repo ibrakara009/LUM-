@@ -1,0 +1,59 @@
+name: Build LUMI APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate icons
+        run: python3 scripts/generate-icons.py
+
+      - name: Add Android platform
+        run: npx cap add android
+
+      - name: Sync Capacitor
+        run: npx cap sync android
+
+      - name: Copy launcher icons
+        run: |
+          for d in resources/android/mipmap-*; do
+            name=$(basename "$d")
+            mkdir -p "android/app/src/main/res/$name"
+            cp "$d/ic_launcher.png" "android/app/src/main/res/$name/ic_launcher.png"
+            cp "$d/ic_launcher_round.png" "android/app/src/main/res/$name/ic_launcher_round.png"
+          done
+
+      - name: Build debug APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: LUMI-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 30

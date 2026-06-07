@@ -1,0 +1,31 @@
+{
+  "name": "lumi-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LUMI — Canlı Sosyal (Play Store + App Store)",
+  "scripts": {
+    "serve": "python3 -m http.server 8770 --directory www",
+    "icons": "python3 scripts/generate-icons.py",
+    "sync:www": "bash scripts/sync-www.sh",
+    "setup": "bash scripts/setup-native.sh",
+    "cap:sync": "npx cap sync",
+    "open:android": "npx cap open android",
+    "open:ios": "npx cap open ios",
+    "build:android:debug": "cd android && ./gradlew assembleDebug",
+    "build:android:release": "cd android && ./gradlew bundleRelease",
+    "build:ios": "npx cap sync ios && npx cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/app": "^6.0.0",
+    "@capacitor/core": "^6.2.0",
+    "@capacitor/haptics": "^6.0.0",
+    "@capacitor/ios": "^6.2.0",
+    "@capacitor/splash-screen": "^6.0.0",
+    "@capacitor/status-bar": "^6.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^6.2.0"
+  }
+}

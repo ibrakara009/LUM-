@@ -1,0 +1,29 @@
+{
+  "name": "LUMI — Canlı Sosyal",
+  "short_name": "LUMI",
+  "description": "Canlı ses salonları, sohbet ve sosyal bağlantı",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0d14",
+  "theme_color": "#6c5ce7",
+  "lang": "tr",
+  "categories": ["social", "entertainment"],
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

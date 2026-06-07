@@ -1,0 +1,30 @@
+{
+  "appId": "com.lumi.social",
+  "appName": "LUMI",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https",
+    "iosScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false,
+    "backgroundColor": "#0b0d14"
+  },
+  "ios": {
+    "backgroundColor": "#0b0d14",
+    "contentInset": "automatic"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "launchAutoHide": true,
+      "backgroundColor": "#0b0d14",
+      "androidSplashResourceName": "splash",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#0b0d14"
+    }
+  }
+}
